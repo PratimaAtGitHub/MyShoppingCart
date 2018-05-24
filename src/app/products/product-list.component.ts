@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {IProduct} from './product';
+import {Component, OnInit} from '@angular/core';
+import { IProduct } from './product';
 
 @Component({
     selector: 'pm-products',
@@ -7,91 +7,80 @@ import {IProduct} from './product';
     styleUrls: ['./Product-list.component.css']
     
 })
-export class ProductListComponent{
+export class ProductListComponent implements OnInit{
+    ngOnInit(): void {
+       console.log('InOnInit');
+    }
     pageTitle: string = 'Product List';
-    imageWidth: number = 50;
-    imageMargin: number = 2;
+    imageWidth: number = 250;
+   // imageMargin: number = 2;
     showImage : boolean = false;
-    _listFilter: string ='';
-
-    get listFilter() : string {
+    _listFilter: string;
+    get listFilter(): string{
         return this._listFilter;
     }
     set listFilter(value:string){
         this._listFilter = value;
-        this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter): this.products;
+        this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
     }
-
     
+
     filteredProducts: IProduct[];
     products:IProduct[] =
     [
         {
             "productId": 1,
-            "productName": "Air Conditioners",
-            "productCode": "GSXC18/DSXC18",
+            "productName": "2018 Porsche Macan",
+            "productCode": "Macan",
             "releaseDate": "March 19, 2016",
-            "description": "Air Conditioners",
-            "price": 219.95,
+            "description": "2018 Porsche Macan",
+            "price": 100219.95,
             "starRating": 4.5,
-            "imageUrl": "assets/images/AC.png"
+            "imageUrl": "assets/images/Car1.jpg"
             //"imageUrl": "AC.png"
             
         },
         {
             "productId": 2,
-            "productName": "Heat Pumps",
-            "productCode": "GSZC18/DSZC18",
+            "productName": "Tata H5X Images",
+            "productCode": "H5X",
             "releaseDate": "March 18, 2016",
-            "description": "Heat Pumps",
-            "price": 132.99,
+            "description": "Tata H5X Images",
+            "price": 62132.99,
             "starRating": 4.2,
-            "imageUrl": "assets/images/HP.png"
+            "imageUrl": "assets/images/Car2.jpg"
         },
         {
             "productId": 5,
-            "productName": "gas-furnaces",
-            "productCode": "GMVM97",
+            "productName": "WagonR",
+            "productCode": "WagonR",
             "releaseDate": "May 21, 2016",
-            "description": "gas-furnaces",
-            "price": 128.9,
+            "description": "WagonR",
+            "price": 65128.9,
             "starRating": 4.8,
-            "imageUrl": "assets/images/GasFurnance.png"
+            "imageUrl": "assets/images/Car3.jpg"
         },
         {
             "productId": 8,
-            "productName": "Packaged Units",
+            "productName": "BMW",
             "productCode": "GPC15H",
             "releaseDate": "May 15, 2016",
-            "description": "Packaged Units",
-            "price": 211.55,
+            "description": "BMW",
+            "price": 99999.55,
             "starRating": 3.7,
-            "imageUrl": "assets/images/PC.png"
+            "imageUrl": "assets/images/Car4.jpg"
         },
-        // {
-        //     "productId": 10,
-        //     "productName": "Video Game Controller",
-        //     "productCode": "GMG-0042",
-        //     "releaseDate": "October 15, 2015",
-        //     "description": "Standard two-button video game controller",
-        //     "price": 35.95,
-        //     "starRating": 4.6,
-        //     "imageUrl": "http://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
-        // }
     ];
-
-    constructor(){
-        this.filteredProducts = this.products;
-        this.listFilter ='';
-    }
     toggleImage(): void{
         this.showImage = !this.showImage;
     }
-    performFilter(filterBy : string): IProduct[]{
-        filterBy = filterBy.toLocaleLowerCase();
-        return this.products.filter((product:IProduct) => 
-    product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
+    constructor(){
+        this.filteredProducts = this.products;
+        this.listFilter = '';
     }
- 
-
+    performFilter(filterBy: string): IProduct[]{
+        filterBy = filterBy.toLocaleLowerCase();
+        return this.products.filter((product: IProduct) =>
+                product.productName.toLocaleLowerCase().indexOf(filterBy) !== -1);
+        }
 }

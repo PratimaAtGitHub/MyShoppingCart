@@ -32,7 +32,8 @@
                     <th>5 Star Rating</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody >
+                <!-- <tr *ngFor = 'let product of filteredProducts'> -->
                 <tr *ngFor = 'let product of filteredProducts'>
                     <td><img  class="img-fluid"  *ngIf='showImage' [src] = 'product.imageUrl' [title] = 'product.productName' [style.width.px] = 'imageWidth' [style.margin.px] = 'imageMargin'/></td>
                     <td>{{ product.productName}}</td>
