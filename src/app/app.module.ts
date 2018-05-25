@@ -1,12 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
-// import { RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { HttpClient } from 'selenium-webdriver/http';
 import { StartComponent } from './shared/star.component';
+import { ProductService } from './products/product.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { StartComponent } from './shared/star.component';
     //   { path: '**', redirectTo: 'welcome', pathMatch: 'full' }
     //]),
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

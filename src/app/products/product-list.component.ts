@@ -74,7 +74,7 @@ export class ProductListComponent implements OnInit{
     toggleImage(): void{
         this.showImage = !this.showImage;
     }
-    constructor(){
+    constructor( ){
         this.filteredProducts = this.products;
         this.listFilter = '';
     }
