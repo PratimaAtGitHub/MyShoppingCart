@@ -29,7 +29,7 @@
                     <th>Code</th>
                     <!-- <th>Available</th> -->
                     <th>Price</th>
-                    <th>5 Star Rating</th>
+                    <th>5 Star Rating - Click to see in Rating in Header</th>
                 </tr>
             </thead>
             <tbody >
@@ -40,7 +40,7 @@
                     <td>{{ product.productCode}}</td>
                     <!-- <td>{{ product.releaseDate}}</td> -->
                     <td>{{ product.price | currency : "USD" : true : '1.2-2'}}</td>
-                    <td><pm-star[Rating]= 'product.starRating'/></td>
+                    <td><pm-star [rating] = 'product.starRating'(ratingClicked) = 'onRatingClicked($event)'></pm-star></td>
                 </tr>
             </tbody>
         </table>
