@@ -2,17 +2,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
 // import { RouterModule} from '@angular/router';
-
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/product-list.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { HttpClient } from 'selenium-webdriver/http';
+import { StartComponent } from './shared/star.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
     WelcomeComponent,
+    StartComponent
     // RouterModule
   ],
   imports: [
