@@ -29,17 +29,18 @@
                     <th>Code</th>
                     <!-- <th>Available</th> -->
                     <th>Price</th>
-                    <th>5 Star Rating</th>
+                    <th>5 Star Rating - Click to see in Rating in Header</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody >
+                <!-- <tr *ngFor = 'let product of filteredProducts'> -->
                 <tr *ngFor = 'let product of filteredProducts'>
                     <td><img  class="img-fluid"  *ngIf='showImage' [src] = 'product.imageUrl' [title] = 'product.productName' [style.width.px] = 'imageWidth' [style.margin.px] = 'imageMargin'/></td>
                     <td>{{ product.productName}}</td>
                     <td>{{ product.productCode}}</td>
                     <!-- <td>{{ product.releaseDate}}</td> -->
                     <td>{{ product.price | currency : "USD" : true : '1.2-2'}}</td>
-                    <td>{{ product.starRating}}</td>
+                    <td><pm-star [rating] = 'product.starRating'(ratingClicked) = 'onRatingClicked($event)'></pm-star></td>
                 </tr>
             </tbody>
         </table>
