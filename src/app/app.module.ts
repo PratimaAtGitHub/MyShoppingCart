@@ -14,6 +14,7 @@ import { ProductService } from './products/product.service';
     ProductListComponent,
     WelcomeComponent,
     StartComponent
+    HttpClient  
     // RouterModule
   ],
   imports: [

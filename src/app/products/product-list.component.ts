@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { IProduct } from './product';
+import { ProductService } from './product.service';
 
 @Component({
     selector: 'pm-products',
@@ -8,8 +9,12 @@ import { IProduct } from './product';
     
 })
 export class ProductListComponent implements OnInit{
+    
+    constructor( private _providerService : ProductService  ){ }
+    
     ngOnInit(): void {
-       console.log('InOnInit');
+       this.products = this._providerService.getProducts();
+       this.filteredProducts = this.products;
     }
     pageTitle: string = 'Product List';
     imageWidth: number = 250;
@@ -26,58 +31,11 @@ export class ProductListComponent implements OnInit{
     
 
     filteredProducts: IProduct[];
-    products:IProduct[] =
-    [
-        {
-            "productId": 1,
-            "productName": "2018 Porsche Macan",
-            "productCode": "Macan",
-            "releaseDate": "March 19, 2016",
-            "description": "2018 Porsche Macan",
-            "price": 100219.95,
-            "starRating": 4.5,
-            "imageUrl": "assets/images/Car1.jpg"
-            //"imageUrl": "AC.png"
-            
-        },
-        {
-            "productId": 2,
-            "productName": "Tata H5X Images",
-            "productCode": "H5X",
-            "releaseDate": "March 18, 2016",
-            "description": "Tata H5X Images",
-            "price": 62132.99,
-            "starRating": 4.2,
-            "imageUrl": "assets/images/Car2.jpg"
-        },
-        {
-            "productId": 5,
-            "productName": "WagonR",
-            "productCode": "WagonR",
-            "releaseDate": "May 21, 2016",
-            "description": "WagonR",
-            "price": 65128.9,
-            "starRating": 4.8,
-            "imageUrl": "assets/images/Car3.jpg"
-        },
-        {
-            "productId": 8,
-            "productName": "BMW",
-            "productCode": "GPC15H",
-            "releaseDate": "May 15, 2016",
-            "description": "BMW",
-            "price": 99999.55,
-            "starRating": 3.7,
-            "imageUrl": "assets/images/Car4.jpg"
-        },
-    ];
+    products:IProduct[] = [];
     toggleImage(): void{
         this.showImage = !this.showImage;
     }
-    constructor( ){
-        this.filteredProducts = this.products;
-        this.listFilter = '';
-    }
+   
     performFilter(filterBy: string): IProduct[]{
         filterBy = filterBy.toLocaleLowerCase();
         return this.products.filter((product: IProduct) =>
